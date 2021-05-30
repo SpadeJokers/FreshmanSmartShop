@@ -5,17 +5,15 @@
 #define N 100
 #pragma warning(disable:4996);
 
-/*±õ½­Ñ§Ôº20¼¶¡¢ÎïÁªÍø¹¤³ÌÑ§Ôº£¬¼ÆËã»ú¿ÆÑ§Óë¼¼Êõ2°à£¬³Ì·½·½£¬20202308049*/
+/*æœ¬ç³»ç»Ÿä¸­ï¼Œåç¼€æŒ‚æœ‰æ•°å­—   1ã€2ã€3    çš„å˜é‡åˆ†åˆ«ä»£è¡¨   æ–°å•†å“çš„é“¾è¡¨ã€ç‰¹ä»·å•†å“çš„é“¾è¡¨ã€é¡¾å®¢è´­ç‰©è½¦çš„é“¾è¡¨
+å¦‚ï¼šï¼ˆ*p_1ï¼šè¿™æ˜¯ä¸€ä¸ªå…³äºä¸»å‡½æ•°ä¸­goods_1çš„åœ¨å‡½æ•°ä¸­çš„ä¸´æ—¶æŒ‡é’ˆå˜é‡ï¼Œé€šå¸¸ç”¨ä½œæŸ¥è¯¢ï¼Œäº¤æ¢ä¸‰éƒ¨æ›²ä¸­çš„â€œå®¹å™¨â€ç­‰ï¼‰
+å‰©ä¸‹çš„ä»¥æ­¤ç±»æ¨ï¼Œå‡½æ•°ä¸­çš„cå˜é‡ä¸€èˆ¬ç”¨ä½œå­˜å‚¨ä¸€ä¸ªintå‹çš„ä¸´æ—¶å˜é‡æ¥ä½¿ç”¨*/
 
-/*±¾ÏµÍ³ÖĞ£¬ºó×º¹ÒÓĞÊı×Ö   1¡¢2¡¢3    µÄ±äÁ¿·Ö±ğ´ú±í   ĞÂÉÌÆ·µÄÁ´±í¡¢ÌØ¼ÛÉÌÆ·µÄÁ´±í¡¢¹Ë¿Í¹ºÎï³µµÄÁ´±í
-Èç£º£¨*p_1£ºÕâÊÇÒ»¸ö¹ØÓÚÖ÷º¯ÊıÖĞgoods_1µÄÔÚº¯ÊıÖĞµÄÁÙÊ±Ö¸Õë±äÁ¿£¬Í¨³£ÓÃ×÷²éÑ¯£¬½»»»Èı²¿ÇúÖĞµÄ¡°ÈİÆ÷¡±µÈ£©
-Ê£ÏÂµÄÒÔ´ËÀàÍÆ£¬º¯ÊıÖĞµÄc±äÁ¿Ò»°ãÓÃ×÷´æ´¢Ò»¸öintĞÍµÄÁÙÊ±±äÁ¿À´Ê¹ÓÃ*/
-
-int number_1 = 0;//ÕâÁ½¸öÈ«¾Ö±äÁ¿ÓÃÀ´¼ÇÂ¼¹Ë¿Í¹ºÂòÉÌÆ·µÄÊıÁ¿¡£
+int number_1 = 0;//è¿™ä¸¤ä¸ªå…¨å±€å˜é‡ç”¨æ¥è®°å½•é¡¾å®¢è´­ä¹°å•†å“çš„æ•°é‡ã€‚
 int number_2 = 0;
 
 
-typedef struct GoodsNode     //¹ØÓÚÉÌÆ·µÄ½á¹¹ÌåÀàĞÍ
+typedef struct GoodsNode     //å…³äºå•†å“çš„ç»“æ„ä½“ç±»å‹
 {
 	char goods_name[N];
 	int goods_key;
@@ -24,38 +22,38 @@ typedef struct GoodsNode     //¹ØÓÚÉÌÆ·µÄ½á¹¹ÌåÀàĞÍ
 	struct GoodsNode *next;
 }Goods;
 
-/*ÒÔÏÂÊÇÔÚ±¾³ÌĞòÖĞÒªÓÃµ½µÄº¯Êı*/
-void Bargain(Goods *&head);   //ÌØ¼ÛÉÌÆ·º¯Êı
-void CheckOut(Goods *L);      //½áÕËº¯Êı
-void Choose_Goods(int key, Goods *&L_1, Goods *&L_2, Goods *&L_3);//¹Ë¿ÍÑ¡ÔñÉÌÆ·µÄº¯Êı
-void Customer_Choose(Goods *&L_1, Goods *&L_2, Goods *&L_3);    //¹Ë¿ÍÑ¡ÔñÒª½øĞĞµÄ»î¶¯Ò³Ãæº¯Êı
-void Destroy(Goods *&L);       //Ïú»ÙÁ´±íº¯Êı
-void Inithead(Goods *&head);    //³õÊ¼»¯Ò»¸ö¹ØÓÚÉÌÆ·µÄÍ·½áµãº¯Êı
-void Initpage();       //³õÊ¼Éí·İÑ¡ÔñÒ³Ãæº¯Êı
-void MyCart(Goods *&L);   //Õ¹Ê¾¹Ë¿Í¹ºÎï³µÖĞËùÒª¹ºÂòµÄ¶«Î÷
-void Putshelves(Goods *&head);       //ÉÏ¼ÜĞÂ»õÎïµÄÉÌÆ·º¯Êı
-void Queryinventory(Goods *L);//²éÑ¯¿â´æº¯Êı
-void Salesperson_Choose(Goods *&L_1, Goods *&L_2);//ÊÛ»õÔ±ÉÏ¼ÜÉÌÆ·£¬²éÑ¯¿â´æµÄº¯Êı
+/*ä»¥ä¸‹æ˜¯åœ¨æœ¬ç¨‹åºä¸­è¦ç”¨åˆ°çš„å‡½æ•°*/
+void Bargain(Goods *&head);   //ç‰¹ä»·å•†å“å‡½æ•°
+void CheckOut(Goods *L);      //ç»“è´¦å‡½æ•°
+void Choose_Goods(int key, Goods *&L_1, Goods *&L_2, Goods *&L_3);//é¡¾å®¢é€‰æ‹©å•†å“çš„å‡½æ•°
+void Customer_Choose(Goods *&L_1, Goods *&L_2, Goods *&L_3);    //é¡¾å®¢é€‰æ‹©è¦è¿›è¡Œçš„æ´»åŠ¨é¡µé¢å‡½æ•°
+void Destroy(Goods *&L);       //é”€æ¯é“¾è¡¨å‡½æ•°
+void Inithead(Goods *&head);    //åˆå§‹åŒ–ä¸€ä¸ªå…³äºå•†å“çš„å¤´ç»“ç‚¹å‡½æ•°
+void Initpage();       //åˆå§‹èº«ä»½é€‰æ‹©é¡µé¢å‡½æ•°
+void MyCart(Goods *&L);   //å±•ç¤ºé¡¾å®¢è´­ç‰©è½¦ä¸­æ‰€è¦è´­ä¹°çš„ä¸œè¥¿
+void Putshelves(Goods *&head);       //ä¸Šæ¶æ–°è´§ç‰©çš„å•†å“å‡½æ•°
+void Queryinventory(Goods *L);//æŸ¥è¯¢åº“å­˜å‡½æ•°
+void Salesperson_Choose(Goods *&L_1, Goods *&L_2);//å”®è´§å‘˜ä¸Šæ¶å•†å“ï¼ŒæŸ¥è¯¢åº“å­˜çš„å‡½æ•°
 
 
-void Initpage()        //³õÊ¼Éí·İÑ¡ÔñÒ³Ãæ
+void Initpage()        //åˆå§‹èº«ä»½é€‰æ‹©é¡µé¢
 {
-	printf("\t\tÄãºÃ£¬»¶Ó­¹âÁÙ³Ì·½·½µÄÖÇÄÜ³¬ÊĞ\n");
-	printf("\t\t\t ÇëÑ¡ÔñÄãµÄÉí·İ£¡\n\n");
+	printf("\t\tä½ å¥½ï¼Œæ¬¢è¿å…‰ä¸´æ™ºèƒ½è¶…å¸‚\n");
+	printf("\t\t\t è¯·é€‰æ‹©ä½ çš„èº«ä»½ï¼\n\n");
 	printf("* * * * * * * * * * * * * * * * * * * * * * * * * * *\n");
-	printf("\t\t1.ÊÛ»õÔ±\n");
-	printf("\t\t2.¹Ë¿Í\n");
+	printf("\t\t1.å”®è´§å‘˜\n");
+	printf("\t\t2.é¡¾å®¢\n");
 	printf("* * * * * * * * * * * * * * * * * * * * * * * * * * *\n");
 	return;
 }
 
-void Queryinventory(Goods *L)        //²éÑ¯¿â´æº¯Êı
+void Queryinventory(Goods *L)        //æŸ¥è¯¢åº“å­˜å‡½æ•°
 {
 	Goods *p;
 	p = L->next;
-	printf("\t\t½ñÈÕÉÌÆ·Ê£Óà¿â´æ\n");
+	printf("\t\tä»Šæ—¥å•†å“å‰©ä½™åº“å­˜\n");
 	printf("* * * * * * * * * * * * * * * * * * * * * * * * *\n");
-	printf("\tĞòÁĞºÅ\tÃû ³Æ\t¼Û ¸ñ\tÊı Á¿\n");
+	printf("\tåºåˆ—å·\tå ç§°\tä»· æ ¼\tæ•° é‡\n");
 	while (p != NULL)
 	{
 		printf("\t%d\t%s\t%d\t%d\n", p->goods_key, p->goods_name, p->goods_price, p->goods_number);
@@ -65,90 +63,90 @@ void Queryinventory(Goods *L)        //²éÑ¯¿â´æº¯Êı
 	return;
 }
 
-void Inithead(Goods *&head)    //³õÊ¼»¯Ò»¸ö¹ØÓÚÉÌÆ·µÄÍ·½áµã
+void Inithead(Goods *&head)    //åˆå§‹åŒ–ä¸€ä¸ªå…³äºå•†å“çš„å¤´ç»“ç‚¹
 {
 	head = (Goods*)malloc(sizeof(Goods));
 	head->next = NULL;
 	return;
 }
 
-void Putshelves(Goods *&head)       //ÉÏ¼ÜÉÌÆ·º¯Êı
+void Putshelves(Goods *&head)       //ä¸Šæ¶å•†å“å‡½æ•°
 {
 	int n,i;
 	Goods *p_1,*q_1;
 	Inithead(head);           
 	q_1 = head;
 
-	printf("ÇëÊäÈë½ñÈÕÒªÉÏ¼ÜÉÌÆ·µÄÊıÁ¿£º");
+	printf("è¯·è¾“å…¥ä»Šæ—¥è¦ä¸Šæ¶å•†å“çš„æ•°é‡ï¼š");
 	scanf("%d", &n);
 	printf("\n");
 	system("cls");
-	printf("Â¼ÈëĞÅÏ¢ÖĞ...............\n");
+	printf("å½•å…¥ä¿¡æ¯ä¸­...............\n");
 
 	for (i = 0 ; i < n ; i++)
 	{
 		p_1 = (Goods*)malloc(sizeof(Goods));
-		p_1->next = q_1->next;                 //ÔËÓÃÎ²²å·¨½øĞĞ²åÈë
+		p_1->next = q_1->next;                 //è¿ç”¨å°¾æ’æ³•è¿›è¡Œæ’å…¥
 		q_1->next = p_1;
 		q_1 = p_1;
 		printf("* * * * * * * * * * * * * * * * * * * * * * * * *\n");
-		printf("µÚ%d¼şÉÌÆ·Ãû³Æ£º",i+1);
+		printf("ç¬¬%dä»¶å•†å“åç§°ï¼š",i+1);
 		scanf("%s", p_1->goods_name);
 		printf("\n");
-		printf("ÉÌÆ·ĞòÁĞºÅ£º");
+		printf("å•†å“åºåˆ—å·ï¼š");
 		scanf("%d", &p_1->goods_key);
 		printf("\n");
-		printf("ÉÌÆ·¼Û¸ñ£º");
+		printf("å•†å“ä»·æ ¼ï¼š");
 		scanf("%d", &p_1->goods_price);
 		printf("\n");
-		printf("ÉÏ¼ÜÊıÁ¿£º");
+		printf("ä¸Šæ¶æ•°é‡ï¼š");
 		scanf("%d", &p_1->goods_number);
 		printf("\n");
 	}
 	printf("* * * * * * * * * * * * * * * * * * * * * * * * *\n");
-	printf("ÒÑÂ¼ÈëĞÅÏ¢¿â£¡\n");
+	printf("å·²å½•å…¥ä¿¡æ¯åº“ï¼\n");
 	return;
 }
 
-void Bargain(Goods *&head)                       //ÉÏ¼ÜÌØ¼ÛÉÌÆ·
+void Bargain(Goods *&head)                       //ä¸Šæ¶ç‰¹ä»·å•†å“
 {
 	int n, i;
 	Goods *p_2, *q_2;
 	Inithead(head);           
 	q_2 = head;
 
-	printf("ÇëÊäÈë½ñÈÕÒªÉÏ¼ÜÌØ¼ÛÉÌÆ·µÄÊıÁ¿£º");
+	printf("è¯·è¾“å…¥ä»Šæ—¥è¦ä¸Šæ¶ç‰¹ä»·å•†å“çš„æ•°é‡ï¼š");
 	scanf("%d", &n);
 	printf("\n");
 	system("cls");
-	printf("Â¼ÈëĞÅÏ¢ÖĞ...............\n");
+	printf("å½•å…¥ä¿¡æ¯ä¸­...............\n");
 
 	for (i = 0; i < n; i++)
 	{
 		p_2 = (Goods*)malloc(sizeof(Goods));
-		p_2->next = q_2->next;                 //ÔËÓÃÎ²²å·¨½øĞĞ²åÈë
+		p_2->next = q_2->next;                 //è¿ç”¨å°¾æ’æ³•è¿›è¡Œæ’å…¥
 		q_2->next = p_2;
 		q_2 = p_2;
 		printf("* * * * * * * * * * * * * * * * * * * * * * * * *\n");
-		printf("µÚ%d¼şÉÌÆ·Ãû³Æ£º", i + 1);
+		printf("ç¬¬%dä»¶å•†å“åç§°ï¼š", i + 1);
 		scanf("%s", p_2->goods_name);
 		printf("\n");
-		printf("ÉÌÆ·ĞòÁĞºÅ£º");
+		printf("å•†å“åºåˆ—å·ï¼š");
 		scanf("%d", &p_2->goods_key);
 		printf("\n");
-		printf("ÉÌÆ·¼Û¸ñ£º");
+		printf("å•†å“ä»·æ ¼ï¼š");
 		scanf("%d", &p_2->goods_price);
 		printf("\n");
-		printf("ÉÏ¼ÜÊıÁ¿£º");
+		printf("ä¸Šæ¶æ•°é‡ï¼š");
 		scanf("%d", &p_2->goods_number);
 		printf("\n");
 	}
 	printf("* * * * * * * * * * * * * * * * * * * * * * * * *\n");
-	printf("ÒÑÂ¼ÈëĞÅÏ¢¿â£¡\n");
+	printf("å·²å½•å…¥ä¿¡æ¯åº“ï¼\n");
 	return;
 }
 
-void Destroy(Goods *&L)       //Ïú»ÙÁ´±í
+void Destroy(Goods *&L)       //é”€æ¯é“¾è¡¨
 {
 	int i;
 	Goods *pre, *p;
@@ -168,16 +166,16 @@ void Choose_Goods(int key,Goods *&L_1,Goods *&L_2,Goods *&L_3)
 {
 	Goods *pre_1=NULL, *pre_2=NULL, *pre_3=NULL, *p=NULL, *p_3=NULL;
 	pre_3 = L_3;
-	p_3 = pre_3->next;								//¹Ë¿Í¹ºÎï³µµÄµ¥Á´
+	p_3 = pre_3->next;								//é¡¾å®¢è´­ç‰©è½¦çš„å•é“¾
 	if (L_1 != NULL)
 	{
-		pre_1 = L_1->next;								 //ĞÂÉÌÆ·µÄµ¥Á´
+		pre_1 = L_1->next;								 //æ–°å•†å“çš„å•é“¾
 	}
 	if (L_2 != NULL)
 	{
-		pre_2 = L_2->next;								//ÌØ¼ÛÉÌÆ·µÄµ¥Á´
+		pre_2 = L_2->next;								//ç‰¹ä»·å•†å“çš„å•é“¾
 	}
-	while (p_3 != NULL)								//ÏÈÔÚ×ÔÉí¼ìË÷£¬Èç¹ûÁ´±íÖĞ´æÔÚÔòÔÚÆäÊıÁ¿ÉÏ¼ÓÒ»
+	while (p_3 != NULL)								//å…ˆåœ¨è‡ªèº«æ£€ç´¢ï¼Œå¦‚æœé“¾è¡¨ä¸­å­˜åœ¨åˆ™åœ¨å…¶æ•°é‡ä¸ŠåŠ ä¸€
 	{
 		if (key == p_3->goods_key)
 		{
@@ -243,11 +241,11 @@ void Choose_Goods(int key,Goods *&L_1,Goods *&L_2,Goods *&L_3)
 	return;
 }
 
-void MyCart(Goods *&L)   //Õ¹Ê¾¹Ë¿Í¹ºÎï³µÖĞËùÒª¹ºÂòµÄ¶«Î÷
+void MyCart(Goods *&L)   //å±•ç¤ºé¡¾å®¢è´­ç‰©è½¦ä¸­æ‰€è¦è´­ä¹°çš„ä¸œè¥¿
 {
 	Goods *p;
 	p = L->next;
-	printf("\nÎÒµÄ¹ºÎï³µ£º\tĞòÁĞºÅ\tÃû³Æ\t¼Û¸ñ\tÊıÁ¿\n");
+	printf("\næˆ‘çš„è´­ç‰©è½¦ï¼š\tåºåˆ—å·\tåç§°\tä»·æ ¼\tæ•°é‡\n");
 	while (p != NULL) 
 	{
 		printf("\t\t%d\t%s\t%d\t%d\n", p->goods_key, p->goods_name, p->goods_price, p->goods_number);
@@ -256,7 +254,7 @@ void MyCart(Goods *&L)   //Õ¹Ê¾¹Ë¿Í¹ºÎï³µÖĞËùÒª¹ºÂòµÄ¶«Î÷
 	return;
 }
 
-void CheckOut(Goods *L)//½áÕËº¯Êı
+void CheckOut(Goods *L)//ç»“è´¦å‡½æ•°
 {
 	int c, price = 0;
 	Goods *p;
@@ -267,34 +265,34 @@ void CheckOut(Goods *L)//½áÕËº¯Êı
 		price = price + p->goods_price;
 		p = p->next;
 	}
-	printf("×Ü½ğ¶îÎª£º%.2d\n", price);
-	printf("ÊÇ·ñÈ·ÈÏ½É·Ñ£º1£ºÊÇ\t2£º·ñ\n");
+	printf("æ€»é‡‘é¢ä¸ºï¼š%.2d\n", price);
+	printf("æ˜¯å¦ç¡®è®¤ç¼´è´¹ï¼š1ï¼šæ˜¯\t2ï¼šå¦\n");
 	scanf("%d",&c);
 	switch (c)
 	{
 	case 1:
 		system("cls");
-		printf("¸ĞĞ»ÄúµÄ¹âÁÙ£¡×£ÄúÉú»îÓä¿ì£¡\n");
+		printf("æ„Ÿè°¢æ‚¨çš„å…‰ä¸´ï¼ç¥æ‚¨ç”Ÿæ´»æ„‰å¿«ï¼\n");
 		getch();
 		break;
 	case 2:
 		system("cls");
-		printf("½É·ÑÊ§°Ü£¡ÇëÖØĞÂÑ¡Ôñ£¡\n");
+		printf("ç¼´è´¹å¤±è´¥ï¼è¯·é‡æ–°é€‰æ‹©ï¼\n");
 		getch();
 		break;
 	}
 	return;
 }
 
-void Customer_Choose(Goods *&L_1,Goods *&L_2,Goods *&L_3)    //¹Ë¿ÍÑ¡ÔñÒ³Ãæ
+void Customer_Choose(Goods *&L_1,Goods *&L_2,Goods *&L_3)    //é¡¾å®¢é€‰æ‹©é¡µé¢
 {
 	int c_1, c_2, c_3 = 1;
 	float price = 0;
 	Goods  *p_1 = L_1, *p_2 = L_2, *p_3 = L_3;
 	printf("----------------------------------------------------------------\n");
-	printf("1£ºÖÇÄÜ¹ºÎï\n");
+	printf("1ï¼šæ™ºèƒ½è´­ç‰©\n");
 	printf("----------------------------------------------------------------\n");
-	printf("0£ºÍË³ö\n");
+	printf("0ï¼šé€€å‡º\n");
 	printf("----------------------------------------------------------------\n");
 	scanf("%d", &c_1);
 	while (1)
@@ -307,29 +305,29 @@ void Customer_Choose(Goods *&L_1,Goods *&L_2,Goods *&L_3)    //¹Ë¿ÍÑ¡ÔñÒ³Ãæ
 				system("cls");
 				if (L_1 == NULL && L_2 == NULL)
 				{
-					printf("½ñÈÕÎŞÉÌÆ·¿ÉÊÛ£¡\n");
+					printf("ä»Šæ—¥æ— å•†å“å¯å”®ï¼\n");
 					getch();
 					system("cls");
 					return;
 				}
 				if (L_1 == NULL)
 				{
-					printf("½ñÈÕÎŞÉÌÆ·¿ÉÊÛ£¡\n");
+					printf("ä»Šæ—¥æ— å•†å“å¯å”®ï¼\n");
 				}
 				else {
-					Queryinventory(L_1);            //ĞÂÉÌÆ·µÄÕ¹Ê¾Ò³Ãæ
+					Queryinventory(L_1);            //æ–°å•†å“çš„å±•ç¤ºé¡µé¢
 					printf("\n");                        
 				}
 				if (L_2 == NULL)
 				{
-					printf("½ñÈÕÎŞÌØ¼ÛÉÌÆ·¿ÉÊÛ£¡\n");
+					printf("ä»Šæ—¥æ— ç‰¹ä»·å•†å“å¯å”®ï¼\n");
 				}
 				else {
-					Queryinventory(L_2);                 //ÌØ¼ÛÉÌÆ·µÄÕ¹Ê¾Ò³Ãæ
+					Queryinventory(L_2);                 //ç‰¹ä»·å•†å“çš„å±•ç¤ºé¡µé¢
 					printf("\n");
 				}
-				printf("ÇëÊäÈëÒª¹ºÂòµÄÉÌÆ·ĞòÁĞºÅ£º\n");
-				printf("\t£¨ÊäÈë0ÔòÎª½áÕË£©\n");
+				printf("è¯·è¾“å…¥è¦è´­ä¹°çš„å•†å“åºåˆ—å·ï¼š\n");
+				printf("\tï¼ˆè¾“å…¥0åˆ™ä¸ºç»“è´¦ï¼‰\n");
 				if (L_3->next != NULL)
 				{
 					MyCart(L_3);
@@ -342,7 +340,7 @@ void Customer_Choose(Goods *&L_1,Goods *&L_2,Goods *&L_3)    //¹Ë¿ÍÑ¡ÔñÒ³Ãæ
 					system("cls");
 					return;
 				}
-				while (p_1 != NULL)    //ÔÚĞÂÉÌÆ·ÖĞ²éÕÒÊÇ·ñ´æÔÚÕâ¸öÉÌÆ·µÄĞòÁĞºÅ£¬Ã»ÓĞÔò´íÎó£¬ÖØĞÂÑ¡
+				while (p_1 != NULL)    //åœ¨æ–°å•†å“ä¸­æŸ¥æ‰¾æ˜¯å¦å­˜åœ¨è¿™ä¸ªå•†å“çš„åºåˆ—å·ï¼Œæ²¡æœ‰åˆ™é”™è¯¯ï¼Œé‡æ–°é€‰
 				{
 					if (c_3 == p_1->goods_key)
 					{
@@ -350,7 +348,7 @@ void Customer_Choose(Goods *&L_1,Goods *&L_2,Goods *&L_3)    //¹Ë¿ÍÑ¡ÔñÒ³Ãæ
 					}
 					p_1 = p_1->next;
 				}
-				while (p_2 != NULL)   //ÔÚÌØ¼ÛÉÌÆ·ÖĞ²éÕÒÊÇ·ñ´æÔÚÕâ¸öÉÌÆ·µÄĞòÁĞºÅ£¬Ã»ÓĞÔò´íÎó£¬ÖØĞÂÑ¡
+				while (p_2 != NULL)   //åœ¨ç‰¹ä»·å•†å“ä¸­æŸ¥æ‰¾æ˜¯å¦å­˜åœ¨è¿™ä¸ªå•†å“çš„åºåˆ—å·ï¼Œæ²¡æœ‰åˆ™é”™è¯¯ï¼Œé‡æ–°é€‰
 				{
 					if (c_3 == p_2->goods_key)
 					{
@@ -361,7 +359,7 @@ void Customer_Choose(Goods *&L_1,Goods *&L_2,Goods *&L_3)    //¹Ë¿ÍÑ¡ÔñÒ³Ãæ
 				if (p_1 == NULL && p_2 == NULL)
 				{
 					system("cls");
-					printf("Ã»ÓĞ¸ÃÉÌÆ·£¬ÇëÖØĞÂÊäÈë£¡");
+					printf("æ²¡æœ‰è¯¥å•†å“ï¼Œè¯·é‡æ–°è¾“å…¥ï¼");
 					getch();
 					p_1 = L_1;
 					p_2 = L_2;
@@ -388,20 +386,20 @@ void Customer_Choose(Goods *&L_1,Goods *&L_2,Goods *&L_3)    //¹Ë¿ÍÑ¡ÔñÒ³Ãæ
 	return;
 }
 
-void Salesperson_Choose(Goods *&L_1,Goods *&L_2)           //ÏúÊÛÈËÔ±Ñ¡ÔñÒ³Ãæ
+void Salesperson_Choose(Goods *&L_1,Goods *&L_2)           //é”€å”®äººå‘˜é€‰æ‹©é¡µé¢
 {
 	int c_1,c_2=1;
 	while (1)
 	{
 		system("cls");
 		printf("----------------------------------------------------------------\n");
-		printf("1£ºÉÏ¼ÜĞÂÉÌÆ·\n");
+		printf("1ï¼šä¸Šæ¶æ–°å•†å“\n");
 		printf("----------------------------------------------------------------\n");
-		printf("2£ºÉÏ¼Ü½ñÈÕÌØ¼ÛÉÌÆ·\n");
+		printf("2ï¼šä¸Šæ¶ä»Šæ—¥ç‰¹ä»·å•†å“\n");
 		printf("----------------------------------------------------------------\n");
-		printf("3£º²é¿´»õÎï¿â´æ\n");
+		printf("3ï¼šæŸ¥çœ‹è´§ç‰©åº“å­˜\n");
 		printf("----------------------------------------------------------------\n");
-		printf("0£º·µ»ØÉÏÒ»¼¶\n");
+		printf("0ï¼šè¿”å›ä¸Šä¸€çº§\n");
 		printf("----------------------------------------------------------------\n");
 		scanf("%d", &c_1);
 		switch (c_1)
@@ -421,11 +419,11 @@ void Salesperson_Choose(Goods *&L_1,Goods *&L_2)           //ÏúÊÛÈËÔ±Ñ¡ÔñÒ³Ãæ
 			{
 				system("cls");
 				printf("----------------------------------------------------------------\n");
-				printf("1£ºĞÂÉÌÆ·¿â´æ\n");
+				printf("1ï¼šæ–°å•†å“åº“å­˜\n");
 				printf("----------------------------------------------------------------\n");
-				printf("2£ºÌØ¼ÛÉÌÆ·¿â´æ\n");
+				printf("2ï¼šç‰¹ä»·å•†å“åº“å­˜\n");
 				printf("----------------------------------------------------------------\n");
-				printf("0£º·µ»ØÉÏÒ»¼¶\n");
+				printf("0ï¼šè¿”å›ä¸Šä¸€çº§\n");
 				printf("----------------------------------------------------------------\n");
 				scanf("%d", &c_2);
 				switch (c_2)
@@ -434,7 +432,7 @@ void Salesperson_Choose(Goods *&L_1,Goods *&L_2)           //ÏúÊÛÈËÔ±Ñ¡ÔñÒ³Ãæ
 					if (L_1 == NULL)
 					{
 						system("cls");
-						printf("ÔİÎŞÊı¾İ£¡");
+						printf("æš‚æ— æ•°æ®ï¼");
 					}
 					else {
 						system("cls");
@@ -446,7 +444,7 @@ void Salesperson_Choose(Goods *&L_1,Goods *&L_2)           //ÏúÊÛÈËÔ±Ñ¡ÔñÒ³Ãæ
 					if (L_2 == NULL)
 					{
 						system("cls");
-						printf("ÔİÎŞÊı¾İ£¡");
+						printf("æš‚æ— æ•°æ®ï¼");
 					}
 					else {
 						system("cls");
@@ -477,20 +475,20 @@ int main(void)
 	int c;
 	while (1)
 	{
-		Initpage();//³õÊ¼»°Ò³Ãæ²Ëµ¥£¬Ñ¡ÔñÉí·İµÄµØ·½
+		Initpage();//åˆå§‹è¯é¡µé¢èœå•ï¼Œé€‰æ‹©èº«ä»½çš„åœ°æ–¹
 		scanf("%d", &c);
 		system("cls");
 		switch (c)
 		{
 		case 1:
-			Salesperson_Choose(goods_1, goods_2);//ÏúÊÛÈËÔ±ÉÏ¼ÜÉÌÆ·£¬²éÑ¯¿â´æµÄº¯Êı
+			Salesperson_Choose(goods_1, goods_2);//é”€å”®äººå‘˜ä¸Šæ¶å•†å“ï¼ŒæŸ¥è¯¢åº“å­˜çš„å‡½æ•°
 			break;
 		case 2:
-			Inithead(shopcart);//½¨Á¢Ò»¸ö¹ºÎï³µµÄÍ·½áµãÁ´±í
+			Inithead(shopcart);//å»ºç«‹ä¸€ä¸ªè´­ç‰©è½¦çš„å¤´ç»“ç‚¹é“¾è¡¨
 			system("cls");
-			Customer_Choose(goods_1, goods_2, shopcart);//¹Ë¿ÍÑ¡ÔñµÄÏîÄ¿À¸
-			number_1 = number_2 = 0;  //½«ÉÏÒ»¸ö¹Ë¿ÍÑ¡ÔñµÄÉÌÆ·ÊıÁ¿¹éÁã
-			Destroy(shopcart);  //½«ÉÏÒ»¸ö¹Ë¿ÍÑ¡¹ºµÄ¹ºÎï³µÏú»Ù£¬ÒÔ±ãÓÚÏÂÒ»¸ö¹Ë¿ÍÑ¡Ôñ
+			Customer_Choose(goods_1, goods_2, shopcart);//é¡¾å®¢é€‰æ‹©çš„é¡¹ç›®æ 
+			number_1 = number_2 = 0;  //å°†ä¸Šä¸€ä¸ªé¡¾å®¢é€‰æ‹©çš„å•†å“æ•°é‡å½’é›¶
+			Destroy(shopcart);  //å°†ä¸Šä¸€ä¸ªé¡¾å®¢é€‰è´­çš„è´­ç‰©è½¦é”€æ¯ï¼Œä»¥ä¾¿äºä¸‹ä¸€ä¸ªé¡¾å®¢é€‰æ‹©
 			break;
 		}
 	}
